@@ -6,8 +6,25 @@ TypeScript-এ ডেটার শেপ (Shape) নির্ধারণ কর
 
 | বৈশিষ্ট্য | Interface (`interface`) | Type Alias (`type`) |
 |-----------|-------------------------|---------------------|
-| Declaration Merging | সমর্থিত — একই নামে একাধিক `interface` লিখলে TypeScript সেগুলো merge করে | সমর্থিত নয় — একই নামে আবার `type` লিখলে error হয় |
+| Declaration Merging | সমর্থিত (একই নামে একাধিক `interface` লিখলে TypeScript সেগুলো merge করে) | সমর্থিত নয় (একই নামে আবার `type` লিখলে error হয়) |
 | Extends / Composition | `extends` ব্যবহার করে অন্য interface inherit করা যায় | `&` (intersection) ব্যবহার করে একাধিক type combine করা যায় |
 | Union Types | সরাসরি union define করা যায় না | সরাসরি union করা যায় (`type A = B \| C`) |
 | Primitives / Tuples | primitive বা tuple define করতে ব্যবহার করা যায় না | primitive, tuple, union ইত্যাদি define করা যায় |
 | Best For | object structure ও class implementation | union, tuple, function signature এবং complex type |
+
+
+// --- Interface ---
+interface User {
+  name: string;
+}
+interface User {
+  age: number; // Declaration Merging: User এখন {name, age}
+}
+
+// --- Type ---
+type Point = {
+  x: number;
+  y: number;
+};
+type ID = string | number; // Union: সম্ভব
+
