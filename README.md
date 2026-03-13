@@ -13,12 +13,14 @@ TypeScript-এ ডেটার শেপ (Shape) নির্ধারণ কর
 | Best For | object structure ও class implementation | union, tuple, function signature এবং complex type |
 
 
+```ts
 // --- Interface ---
 interface User {
   name: string;
 }
+
 interface User {
-  age: number; // Declaration Merging: User এখন {name, age}
+  age: number; // Declaration Merging: User এখন { name, age }
 }
 
 // --- Type ---
@@ -26,5 +28,6 @@ type Point = {
   x: number;
   y: number;
 };
-type ID = string | number; // Union: সম্ভব
 
+type ID = string | number; // Union: সম্ভব
+```
