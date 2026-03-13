@@ -31,3 +31,8 @@ type Point = {
 
 type ID = string | number; // Union: সম্ভব
 ```
+
+
+
+
+**২. any, unknown এবং never টাইপের মধ্যে পার্থক্য**
