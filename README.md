@@ -1,29 +1,13 @@
 **১. TypeScript-এ Interface এবং Type-এর মধ্যে পার্থক্য**
 
-TypeScript-এ interface এবং type উভয়েই অবজেক্টের গঠন নির্ধারণ করতে ব্যবহৃত হলেও মূল পার্থক্য হলো: interface ডিক্লারেশন মার্জিং (একই নামে একাধিকবার সংজ্ঞায়িত করা) সমর্থন করে এবং extends ব্যবহার করে, যা অবজেক্টের জন্য সেরা। অন্যদিকে, type (type alias) ইউনিয়ন, ইন্টারসেকশন ও প্রিমিটিভ টাইপের জন্য বেশি নমনীয়। 
-TypeScript
-TypeScript
- +4
-মূল পার্থক্যের টেবিল:
-বৈশিষ্ট্য 	Interface (interface)	Type Alias (type)
-Declaration Merging	সমর্থিত (একই নামে বারবার লেখা যায়)	সমর্থিত নয় (একই নামে এরর দেয়)
-Extends/Intersection	extends ব্যবহার করে	& (intersection) ব্যবহার করে
-Union Types	সরাসরি সাপোর্ট করে না	সরাসরি সাপোর্ট করে (যেমন: type A = B | C)
-Primitives/Tuples	সাপোর্ট করে না	সাপোর্ট করে
-Best For	অবজেক্টের স্ট্রাকচার ও ক্লাস ইমপ্লিমেন্টেশন	ইউনিয়ন, টুপল, ফাংশন সিগনেচার
-উদাহরণ (GitHub Style):
-typescript
-// --- Interface ---
-interface User {
-  name: string;
-}
-interface User {
-  age: number; // Declaration Merging: User এখন {name, age}
-}
+TypeScript-এ ডেটার শেপ (Shape) নির্ধারণ করার জন্য interface এবং type উভয়ই ব্যবহার করা হয়। তবে প্রধান পার্থক্য হলো interface শুধুমাত্র object এর জন্য এবং এতে Declaration Merging (একই নামে একাধিকবার সংজ্ঞা) কাজ করে। অন্যদিকে, type (Type Alias) আরও বহুমুখী, যা primitive type, union, intersection ও tupple তৈরিতে সক্ষম, কিন্তু merging সাপোর্ট করে না।
 
-// --- Type ---
-type Point = {
-  x: number;
-  y: number;
-};
-type ID = string | number; // Union: সম্ভব
+## Interface vs Type Alias — মূল পার্থক্য
+
+| বৈশিষ্ট্য | Interface (`interface`) | Type Alias (`type`) |
+|-----------|-------------------------|---------------------|
+| Declaration Merging | সমর্থিত — একই নামে একাধিক `interface` লিখলে TypeScript সেগুলো merge করে | সমর্থিত নয় — একই নামে আবার `type` লিখলে error হয় |
+| Extends / Composition | `extends` ব্যবহার করে অন্য interface inherit করা যায় | `&` (intersection) ব্যবহার করে একাধিক type combine করা যায় |
+| Union Types | সরাসরি union define করা যায় না | সরাসরি union করা যায় (`type A = B \| C`) |
+| Primitives / Tuples | primitive বা tuple define করতে ব্যবহার করা যায় না | primitive, tuple, union ইত্যাদি define করা যায় |
+| Best For | object structure ও class implementation | union, tuple, function signature এবং complex type |
