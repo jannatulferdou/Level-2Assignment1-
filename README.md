@@ -33,10 +33,14 @@ type ID = string | number; // Union: সম্ভব
 ```
 
 
+Text line
+
+```ts
+let x = 10;
 
 
 **২. any, unknown এবং never টাইপের মধ্যে পার্থক্য**
-
+**২. any, unknown এবং never টাইপের মধ্যে পার্থক্য**
 TypeScript-এ any, unknown এবং never তিনটি ভিন্ন কাজের জন্য ব্যবহৃত হয়। any টাইপ-চেকিং পুরোপুরি বন্ধ করে দেয় (অনিরাপদ), unknown অজানা টাইপের জন্য নিরাপদ বিকল্প যা ব্যবহারের আগে চেক করতে হয়, এবং never এমন value নির্দেশ করে যা কখনোই ঘটার কথা নয় (যেমন- error বা infinity loop)।
 
 
